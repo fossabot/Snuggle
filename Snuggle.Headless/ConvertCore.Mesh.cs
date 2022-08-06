@@ -18,7 +18,7 @@ public static partial class ConvertCore {
 
         fullPath.EnsureDirectoryExists();
 
-        SnuggleMeshFile.Save(
+        SnuggleGltfMeshFile.Save(
             mesh,
             fullPath,
             ObjectDeserializationOptions.Default,

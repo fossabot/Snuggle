@@ -22,7 +22,7 @@ using Mesh = Snuggle.Core.Implementations.Mesh;
 
 namespace Snuggle.Converters;
 
-public static class SnuggleMeshFile {
+public static class SnuggleGltfMeshFile {
     private static readonly string[] ChannelToSemantic = {
         "POSITION",
         "NORMAL",

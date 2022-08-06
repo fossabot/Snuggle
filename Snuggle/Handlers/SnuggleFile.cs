@@ -271,7 +271,7 @@ public static class SnuggleFile {
                 return;
             }
             case Mesh mesh: {
-                SnuggleMeshFile.Save(mesh, resultPath, instance.Settings.ObjectOptions, instance.Settings.ExportOptions, instance.Settings.MeshExportOptions);
+                SnuggleGltfMeshFile.Save(mesh, resultPath, instance.Settings.ObjectOptions, instance.Settings.ExportOptions, instance.Settings.MeshExportOptions);
                 return;
             }
             case Component component: {
@@ -284,7 +284,7 @@ public static class SnuggleFile {
                     return;
                 }
 
-                SnuggleMeshFile.Save(gameObject, resultPath, instance.Settings.ObjectOptions, instance.Settings.ExportOptions, instance.Settings.MeshExportOptions);
+                SnuggleGltfMeshFile.Save(gameObject, resultPath, instance.Settings.ObjectOptions, instance.Settings.ExportOptions, instance.Settings.MeshExportOptions);
                 return;
             }
             case Text text: {
@@ -304,7 +304,7 @@ public static class SnuggleFile {
                 return;
             }
             case GameObject gameObject: {
-                SnuggleMeshFile.Save(gameObject, resultPath, instance.Settings.ObjectOptions, instance.Settings.ExportOptions, instance.Settings.MeshExportOptions);
+                SnuggleGltfMeshFile.Save(gameObject, resultPath, instance.Settings.ObjectOptions, instance.Settings.ExportOptions, instance.Settings.MeshExportOptions);
                 return;
             }
             case AudioClip clip: {
