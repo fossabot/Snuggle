@@ -15,7 +15,9 @@ public record SnuggleExportOptions(
     [Description("Only display and export objects with CAB paths")]
     bool OnlyWithCABPath,
     [Description("Keep audio samples in their native format")]
-    bool WriteNativeAudio) {
+    bool WriteNativeAudio,
+    [Description("Writes ActorX files for meshes/animations.")]
+    bool WriteActorX) {
     private const string PathTemplateDescription = @"Output Path Template
 Available variables:
     Id - The Path ID of the object.
@@ -41,10 +43,10 @@ Available variables:
     public const string DefaultPathTemplate = "{ProductOrProject}/{Version}/{ContainerOrNameWithoutExt}_{Id}.{Ext}";
     public const string DefaultContainerlessPathTemplate = "{ProductOrProject}/{Version}/{Tag}/__unknown/{Type}/{Name}_{Id}.{Ext}";
 
-    private const int LatestVersion = 10;
+    private const int LatestVersion = 11;
     public int Version { get; init; } = LatestVersion;
 
-    public static SnuggleExportOptions Default { get; } = new(false, DefaultPathTemplate, DefaultContainerlessPathTemplate, false, false, true);
+    public static SnuggleExportOptions Default { get; } = new(false, DefaultPathTemplate, DefaultContainerlessPathTemplate, false, false, true, false);
 
     public bool NeedsMigration() => Version < LatestVersion;
 
@@ -77,6 +79,10 @@ Available variables:
         }
 
         // Version 10 removed UseDirectTex
+
+        if (Version < 11) {
+            settings = settings with { WriteActorX = false };
+        }
 
         return settings with { Version = LatestVersion };
     }
